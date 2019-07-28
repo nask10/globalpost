@@ -14,3 +14,4 @@ class PostcodeController < ApplicationController
  
   def show
   end
+end
