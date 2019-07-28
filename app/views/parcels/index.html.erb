@@ -1,0 +1,44 @@
+<% if current_user.admin? %>
+    <h1>Parcels</h1>
+    <div>
+        <%= link_to 'Create', new_parcel_path, class: 'btn btn-success' %>
+    </div>
+
+<% else %>
+    <h1>Parcels for user <%= current_user.email %></h1>
+<% end %>
+
+<hr>
+
+<table class="table">
+<thead>
+<tr>
+<th>Tracking code</th>
+<% if current_user.admin %>
+  <th>Owner</th>
+<% end %>
+<th>Origin</th>
+<th>Destination</th>
+<th>Receiver name</th>
+<th>Receiver phone</th>
+<th>Receiver e-mail</th>
+<th>Creation date</th>
+</tr>
+</thead>
+<tbody>
+<% @parcels.each do |parcel| %>
+    <tr>
+    <td><%= link_to parcel.tracking_code, user_parcel_path(current_user.id, parcel.id), class: 'btn btn-warning' %></td>
+    <% if current_user.admin %>
+        <td><%= parcel.user.email %></td>
+    <% end %>
+    <td><%= parcel.origin_address %></td>
+    <td><%= parcel.destination_address %></td>
+    <td><%= parcel.receiver_name %></td>
+    <td><%= parcel.receiver_phone %></td>
+    <td><%= parcel.receiver_email %></td>
+    <td><%= parcel.created_at %></td>
+    </tr>
+<% end %>
+</tbody>
+</table>

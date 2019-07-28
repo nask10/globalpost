@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tracking_code: MyString
+  origin_address_id: 1
+  destination_address_id: 1
+  receiver_name: MyString
+  receiver_phone: MyString
+  receiver_email: MyString
+
+two:
+  tracking_code: MyString
+  origin_address_id: 1
+  destination_address_id: 1
+  receiver_name: MyString
+  receiver_phone: MyString
+  receiver_email: MyString

@@ -1,0 +1,9 @@
+<% @notifications_list.each do |notification| %>
+    <div class="dropdown-item">
+        <%=
+            link_to notification['body'].html_safe,
+            tracking_code_parcels_path(notification['tracking_code']),
+            data: {tracking_code: notification['tracking_code']}
+        %>
+    </div>
+<% end %>

@@ -1,0 +1,66 @@
+<h1>Register a parcel</h1>
+
+<div>
+    <%= form_for @parcel do |f| %>
+        <div class="form-group col col-md-12">
+            <%= f.label 'Client' %><br />
+            <%= f.select :user_id, options_from_collection_for_select(@users, :id, :email), {class: 'form-control' } %>            <%= 
+                link_to 'Add user', 'javascript:void(0)', class: 'btn btn-primary btn-sm',
+                    data: {toggle: 'modal', target: '#add_user_modal'}
+             %><br />
+            <br />
+            <div class="row">
+            <div class="col-md-4" style="border: 1px solid gray;">
+            <%= field_set_tag do %>
+                <%= label_tag 'Origin address'%><br />
+                <%= label_tag 'Street'%><br />
+                <%= text_field_tag 'origin_address[street]', nil,  class: 'form-control' %>
+                <%= label_tag 'External number'%><br />
+                <%= text_field_tag 'origin_address[ext_number]', nil,  class: 'form-control' %>
+                <%= label_tag 'Appartment number'%><br />
+                <%= text_field_tag 'origin_address[int_number]', nil,  class: 'form-control' %>
+                <%= label_tag 'City'%><br />
+                <%= text_field_tag 'origin_address[city]', nil,  class: 'form-control' %>
+                <%= label_tag 'Country'%><br />
+                <%= text_field_tag 'origin_address[country]', nil,  class: 'form-control' %>
+                <%= label_tag 'ZIP code'%><br />
+                <%= text_field_tag 'origin_address[zip_code]', nil,  class: 'form-control' %>
+            <% end %>
+            </div>
+            <div class="col-md-4" style="border: 1px solid gray;">
+            <%= field_set_tag do %>
+                <%= label_tag 'Destination address'%><br />
+                <%= label_tag 'Street'%><br />
+                <%= text_field_tag 'destination_address[street]', nil,  class: 'form-control' %>
+                <%= label_tag 'External number'%><br />
+                <%= text_field_tag 'destination_address[ext_number]', nil,  class: 'form-control' %>
+                <%= label_tag 'Appartment number'%><br />
+                <%= text_field_tag 'destination_address[int_number]', nil,  class: 'form-control' %>
+                <%= label_tag 'City'%><br />
+                <%= text_field_tag 'destination_address[city]', nil,  class: 'form-control' %>
+                <%= label_tag 'Country'%><br />
+                <%= text_field_tag 'destination_address[country]', nil,  class: 'form-control' %>
+                <%= label_tag 'ZIP code'%><br />
+                <%= text_field_tag 'destination_address[zip_code]', nil,  class: 'form-control' %>
+            <% end %>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-md-6">
+            <%= f.label 'Receiver name' %><br />
+            <%= f.text_field :receiver_name, class: 'form-control' %><br />
+            <%= f.label 'Receiver phone' %><br />
+            <%= f.phone_field :receiver_phone, class: 'form-control' %><br />
+            <%= f.label 'Receiver e-mail' %><br />
+            <%= f.email_field :receiver_email, class: 'form-control' %><br />            
+            </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <%= f.submit "Create", class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+</div>
+
+<%= render 'shared/add_user_modal' %>
