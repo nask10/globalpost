@@ -8,4 +8,3 @@ The three services should run at the same time
 Microservices 1 - user and admin access
 Microservices 2 & 3 - admin access only
 
-# globalpost
