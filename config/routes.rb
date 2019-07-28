@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :track_events
   end
 
+  get 'postcode/postcode'
   get 'welcome/faq'
   get 'welcome/about'
   get 'welcome/features'

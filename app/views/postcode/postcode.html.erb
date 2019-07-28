@@ -1,0 +1,33 @@
+<h3>Look for Postcode</h3>
+
+<br/>
+
+<%= form_tag postcode_path, :method => 'POST' do%>
+  <%= text_field_tag 'symbol', nil, placeholder: 'Enter Postcode', size: 40 %>
+  <%= submit_tag 'Postcode', class: 'btn btn-primary' %>
+<% end %>
+
+<br/>
+
+<div class="postcode">
+    
+<% if @postcode %>
+    <% @postcode['postcode'].each do |country, primary_care_trust. parliamentary_constituency.admin_district| %>
+        <% if @postcode ==  country %>
+          <%= postcode %>: <%= country %>
+        <% end %>
+    <% end %>
+ <% end %>
+    
+ </div>
+
+
+<br/>
+
+<div class= "container text-center">
+
+    <div class="btn-group">
+    <%= link_to 'Back to HomePage', home_home_path, :class => "btn btn-primary" %>
+    </div>
+    
+</div>
