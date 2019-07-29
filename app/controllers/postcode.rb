@@ -3,14 +3,14 @@ require 'postcode_api'
 class PostcodeController < ApplicationController
     before_action :user_signed_in?
 
-  # GET /postcode
+  # Get /postcode
   
   def index
     retrieve_data
     render "postcode/index"
   end
 
-  # GET /postcode
+  # Get /postcode
  
   def show
   end

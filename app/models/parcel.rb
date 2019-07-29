@@ -15,18 +15,10 @@ class Parcel < ApplicationRecord
     end
 
     def push_data_to_tracker
-
-        # HTTP request - GET, POST, PUT, DELETE
-        result = GlobalPost::HTTP.create_parcel(
-            self,
-            Address.find(origin_address_id),
-            Address.find(destination_address_id)
-        )
-        
-        
-
-        # ActiveJob.send_data_to_m2
-        # OR
-        # RabbitMQ.send_data_to_m2
+        PushParcelToTrackerJob.perform_later(
+            self.id,
+            self.origin_address_id,
+            self.destination_address_id
+        )               
     end
 end

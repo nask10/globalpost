@@ -42,6 +42,8 @@ gem 'httparty'
 
 gem 'activeadmin'
 
+gem 'sidekiq'
+
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

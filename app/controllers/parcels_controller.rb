@@ -6,7 +6,7 @@ class ParcelsController < ApplicationController
     def show
         if params[:code]
             @parcel = Parcel.find_by tracking_code: params[:code]
-            GlobalPost::Notification::HTTP.mark_as_read(params[:code])
+            MarkNotificationAsReadJob.perform_later params[:code]
         else
             @parcel = Parcel.find params[:id]
         end
