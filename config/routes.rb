@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :track_events
+    resources :users
   end
 
   get 'postcode/postcode'
