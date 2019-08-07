@@ -16,7 +16,7 @@ class ParcelsController < ApplicationController
 
     def new
         @parcel = Parcel.new
-        @users = User.where(admin: false)
+        @users = User.in(admin: nil)
     end
 
     def create
@@ -26,15 +26,16 @@ class ParcelsController < ApplicationController
             # Ensure generated tracking code does not exist already
             while true do
                 tracking_code = SecureRandom.base64(16).gsub(/\W/, '')
-                break unless Parcel.find_by tracking_code: tracking_code
+                break unless Parcel.where(tracking_code: tracking_code).length > 0
             end
     
         @parcel = Parcel.new(parcel_params.merge(
             tracking_code: tracking_code,
-            origin_address_id: origin.id,
-            destination_address_id: destination.id,
+            origin_address_id: origin._id.to_s,
+            destination_address_id: destination._id.to_s,
             status: 'added to system'
         ))
+
         if @parcel.save
             redirect_to parcels_path, notice: 'Item created!'
         else

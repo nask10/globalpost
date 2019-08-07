@@ -7,9 +7,6 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/admin/sidekiq'
   
   devise_for :users
-  devise_for :admins, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :users do
     collection do
@@ -30,13 +27,15 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  get 'postcode/postcode'
+  get 'home/index' => 'home#index', as: 'dashboard'
+  get 'postcode/postcode', 'postcode#postcode'
+  post 'postcode/lookup_postcode', 'postcode#lookup_postcode'
   get 'welcome/faq'
   get 'welcome/about'
   get 'welcome/features'
   get 'welcome/index'
   
 
-  root to: 'home#index'
+  root to: 'welcome#index'
   
 end

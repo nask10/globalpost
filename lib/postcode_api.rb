@@ -1,19 +1,20 @@
 module Postcode
     class HTTP
         include HTTParty
-        base_uri "https://api.postcodes.io"
+        base_uri "https://maps.googleapis.com/"
 
         def initialize
         end
 
-        def make_call(path, options = {})
+        def self.make_call(path, options = {})
             method = options[:method] || :get
-            self.class.send(method, path)
+            send(method, path)
         end
 
-        def ticker_data(postcode)
-          path= "api.postcodes.io/postcodes"
-          make_call
+        def self.ticker_data(address)
+          path= "/maps/api/geocode/json?address=#{address}"
+          path << "&key=#{ENV['GOOGLE_GEOCODE_API_KEY']}"
+          make_call path
         end
     end
 end

@@ -1,0 +1,32 @@
+<h3>Look for Address</h3>
+
+<br/>
+
+<%= form_tag 'lookup_postcode', method: :post do %>
+  <%= text_field_tag 'symbol', nil, placeholder: 'Enter Address', size: 40 %>
+  <%= submit_tag 'Validate', class: 'btn btn-primary' %>
+<% end %>
+
+<br/>
+
+<div class="postcode">
+    
+<% if @response %>
+    <% @response.each do |item| %>
+      <h5>Formatted Address</h5>
+      <%= item['formatted_address'] %>
+    <% end %>
+ <% end %>
+    
+ </div>
+
+
+<br/>
+
+<div class= "container text-center">
+
+    <div class="btn-group">
+    <%= link_to 'Back to HomePage', '/', :class => "btn btn-primary" %>
+    </div>
+    
+</div>

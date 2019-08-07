@@ -5,13 +5,15 @@ class PostcodeController < ApplicationController
 
   # Get /postcode
   
-  def index
-    retrieve_data
-    render "postcode/index"
+  def postcode
+  
   end
 
   # Get /postcode
  
-  def show
+  def lookup_postcode
+    @response = Postcode::HTTP.ticker_data(params[:symbol].
+      gsub(' ', '+').gsub(',',''))['results']
   end
+
 end
