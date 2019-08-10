@@ -1,11 +1,1 @@
-<h3>Look for Address</h3>
-
-<br/>
-
-<%= form_tag 'lookup_postcode', method: :post do %>
-  <%= text_field_tag 'symbol', nil, placeholder: 'Enter Address', size: 40 %>
-  <%= submit_tag 'Validate', class: 'btn btn-primary' %>
-<% end %>
-
-<br/>
-
+<%= render 'form' %>

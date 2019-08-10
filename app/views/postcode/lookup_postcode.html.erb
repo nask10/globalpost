@@ -1,25 +1,21 @@
-<h3>Look for Address</h3>
+<%= render 'form' %>
 
 <br/>
 
-<%= form_tag 'lookup_postcode', method: :post do %>
-  <%= text_field_tag 'symbol', nil, placeholder: 'Enter Address', size: 40 %>
-  <%= submit_tag 'Validate', class: 'btn btn-primary' %>
-<% end %>
-
-<br/>
-
-<div class="postcode">
-    
 <% if @response %>
     <% @response.each do |item| %>
-      <h5>Formatted Address</h5>
-      <%= item['formatted_address'] %>
+      <div class="card" style="width: 36rem;">
+        <div class="card-body">
+          <h5 class="card-title">Formatted Address</h5>
+          <hr>
+          <div class="col-sm-12">
+            <%= item['formatted_address'] %>
+          </div>
+        </div>
+
+      </div>
     <% end %>
  <% end %>
-    
- </div>
-
 
 <br/>
 

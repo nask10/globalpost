@@ -28,8 +28,8 @@ Rails.application.routes.draw do
   end
 
   get 'home/index' => 'home#index', as: 'dashboard'
-  get 'postcode/postcode', 'postcode#postcode'
-  post 'postcode/lookup_postcode', 'postcode#lookup_postcode'
+  get 'postcode' => 'postcode#postcode'
+  post 'lookup_postcode' => 'postcode#lookup_postcode'
   get 'welcome/faq'
   get 'welcome/about'
   get 'welcome/features'
