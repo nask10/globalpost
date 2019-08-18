@@ -1,0 +1,29 @@
+<%= render 'form' %>
+
+<br/>
+
+<% if @response %>
+    <% idx = 1 %>
+    <% @response.each do |item| %>
+      <div class="card" style="width: 36rem;">
+        <div class="card-body">
+          <h5 class="card-title">Result <%= idx %></h5>
+          <hr>
+          <div class="col-sm-12">
+            <%= item['formatted_address'] %>
+          </div>
+        </div>
+      </div>
+      <% idx += 1 %>
+    <% end %>
+ <% end %>
+
+<br/>
+
+<div class= "container text-center">
+
+    <div class="btn-group">
+    <%= link_to 'Back to HomePage', '/', :class => "btn btn-primary" %>
+    </div>
+    
+</div>

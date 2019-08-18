@@ -1,0 +1,21 @@
+<hr>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active">
+      <h4>Lookup address</h4>
+    </li>
+  </ol>
+</nav>
+
+<%= form_tag lookup_postcode_path, method: :post do %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= text_field_tag 'symbol', nil, placeholder: 'Enter Address', size: 40, class: 'form-control' %>
+    </div>
+    <div class="col-md-4">
+      <%= submit_tag 'Validate', class: 'btn btn-primary' %>
+    </div>
+  </div>
+
+<% end %>
+
